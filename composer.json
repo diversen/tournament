@@ -1,0 +1,6 @@
+{
+    "require": { 
+        "phpoffice/phpexcel": "dev-develop",
+        "geoip/geoip": "~1.14"
+    }
+}

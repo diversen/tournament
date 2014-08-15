@@ -1,0 +1,25 @@
+// former indexAction: displays list options 
+
+
+        $list_id = $l->getSessionListId();
+        
+        if (!session::isUser()) {
+            $c_link = html::createLink('/account/login/create', 'Create account');
+            $l_link = html::createLink('/account/login/index', 'login');
+            echo "$c_link or $l_link in order to create lists";
+        }
+        
+        else if (!$list_id) {
+            
+            echo html::getError('No list selected!');
+            echo html::createLink('/tournament/lists/add', 'Create new');
+            echo " or "; 
+            echo html::createLink('/tournament/lists/me', 'select one');
+            
+        } else {
+            $list = $l->getList($list_id);
+            echo html::specialEncode("You are working on '$list[title]'. ");
+            echo html::createLink('/tournament/lists/add', 'Create new');
+            echo " or "; 
+            echo html::createLink('/tournament/lists/me', 'select another');
+        }

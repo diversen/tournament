@@ -1,0 +1,50 @@
+### Options light box report. 
+
+<script type="text/javascript" src="/js/jquery.lightbox_me.js"></script>
+<style>
+.options-box {
+                display:none;
+            }
+</style>
+    public function lightboxJs ($id) { 
+        $class_link = "report-$id";
+        $class_box ="report-$id-lb";
+        ob_start();
+        
+        ?>
+<script>
+$('.<?=$class_link?>').click(function(e) {
+    $('.<?=$class_box?>').lightbox_me({
+        centered: true
+        });
+    e.preventDefault();
+});
+</script>
+    <?php
+        return ob_get_clean();
+        
+    }
+    
+    public function lightboxHtml ($id) {
+        $class_box ="options-box report-$id-lb";
+        ob_start();
+        
+        ?>
+<div class ="<?=$class_box?>">
+    <h3>Hello world</h3>
+</div>
+    <?php
+        return ob_get_clean();
+        
+    }
+
+    public function generateOptions ($id) {
+        $class_r = "report-$id";
+        $options = array ('class' => $class_r);
+        
+        
+        $str = html::createLink("/report/index/$id", 'Report', $options);
+        $str.= $this->lightboxHtml($id);
+        $str.= $this->lightboxJs($id);
+        return $str;
+    }
