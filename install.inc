@@ -1,6 +1,10 @@
 <?php
 
 $_INSTALL['VERSION'] = 2.12; 
+
+$_INSTALL['PUBLIC_CLONE_URL'] = "git://github.com/diversen/tournament.git";
+$_INSTALL['PRIVATE_CLONE_URL'] = 'git@github.com:diversen/tournament.git';
+
 $_INSTALL['MAIN_MENU_ITEMS'][] = array (
     'title' => lang::translate('Tourney overview', null, array ('no_translate' => true)),
     'url' => '/tournament/overview/index',
